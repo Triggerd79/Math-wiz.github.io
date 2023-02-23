@@ -1,0 +1,231 @@
+* {
+
+			padding: 0;			margin: 0;
+
+			box-sizing: border-box;
+
+		}
+
+		body {
+
+			font-family: Arial, sans-serif;
+
+			background-color: #F0F0F0;
+
+		}
+
+		.header {
+
+			background-color: #333;
+
+			color: white;
+
+			padding: 20px;
+
+			text-align: center;
+
+		}
+
+		.header h2 {
+
+			margin: 0;
+
+		}
+
+		.main-game {
+
+			display: flex;
+
+			justify-content: center;
+
+			align-items: center;
+
+			height: calc(100vh - 40px);
+
+		}
+
+		.question {
+
+			background-color: #fff;
+
+			padding: 20px;
+
+			border-radius: 10px;
+
+			box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+
+			text-align: center;
+
+			margin-right: 20px;
+
+		}
+
+		.answer {
+
+			background-color: #fff;
+
+			padding: 20px;
+
+			border-radius: 10px;
+
+			box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+
+		}
+
+		#question {
+
+			font-size: 24px;
+
+			font-weight: bold;
+
+			margin-bottom: 20px;
+
+		}
+
+		#num1,
+
+		#num2 {
+
+			font-size: 36px;
+
+			font-weight: bold;
+
+			margin: 0 10px;
+
+		}
+
+		#operator {
+
+			font-size: 36px;
+
+			font-weight: bold;
+
+		}
+
+		form {
+
+			display: flex;
+
+			flex-direction: column;
+
+			align-items: center;
+
+		}
+
+		input[type="number"] {
+
+			width: 100%;
+
+			padding: 10px;
+
+			font-size: 18px;
+
+			margin-bottom: 20px;
+
+		}
+
+		.check {
+
+			background-color: #333;
+
+			color: white;
+
+			padding: 10px 20px;
+
+			border: none;
+
+			border-radius: 10px;
+
+			cursor: pointer;
+
+		}
+
+		.check {
+
+			width: 100%;
+
+			color: white;
+
+			border-radius: 5px;
+
+			border: none;
+
+			cursor: pointer;
+
+			transition: 0.3s ease;
+
+		}
+
+		.check:hover {
+
+			background-color: #444;
+
+		}
+
+		.score,
+
+		.timer {
+
+			margin-top: 20px;
+
+			font-size: 18px;
+
+		}
+
+		/*  */
+
+		.score {
+
+			margin-top: 30px;
+
+			text-align: center;
+
+		}
+
+		@media only screen and (max-width: 600px) {
+
+			.header {
+
+				text-align: center;
+
+				margin: 0;
+
+				padding: 20px;
+
+			}
+
+			.main-game {
+
+				display: flex;
+
+				flex-direction: column;
+
+				align-items: center;
+
+			}
+
+			.question {
+
+				margin-bottom: 20px;
+
+			}
+
+			.answer {
+
+				width: 80%;
+
+			}
+
+			input[type="number"] {
+
+				width: 100%;
+
+			}
+
+			.check {
+
+				background-color: #333;
+
+			}
+
+		}

@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width">
+	<meta name="description"
+		content="Challenge your math skills with our exciting game! Test your abilities in a fun and engaging way, and improve your mental math abilities today. With multiple difficulty levels and a variety of challenges, this game is perfect for all ages and skill levels.">
+	<meta name="keywords" content="Math skills, math game, mental math, arithmetic, calculation, addition, subtraction, multiplication, division, problem-solving, brain training, educational game, learning game.
+">
+	<title>Math Wizard</title>
+	<link href="style.css" rel="stylesheet" type="text/css" />
+	<style>
+		* {
+			padding: 0;
+			margin: 0;
+			box-sizing: border-box;
+		}
+
+		body {
+			font-family: Arial, sans-serif;
+			background-color: #F0F0F0;
+		}
+
+		.header {
+			background-color: #333;
+			color: white;
+			padding: 20px;
+			text-align: center;
+		}
+
+		.header h2 {
+			margin: 0;
+		}
+
+		.main-game {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			height: calc(100vh - 40px);
+		}
+
+		.question {
+			background-color: #fff;
+			padding: 20px;
+			border-radius: 10px;
+			box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+			text-align: center;
+			margin-right: 20px;
+		}
+
+		.answer {
+			background-color: #fff;
+			padding: 20px;
+			border-radius: 10px;
+			box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+		}
+
+		#question {
+			font-size: 24px;
+			font-weight: bold;
+			margin-bottom: 20px;
+		}
+
+		#num1,
+		#num2 {
+			font-size: 36px;
+			font-weight: bold;
+			margin: 0 10px;
+		}
+
+		#operator {
+			font-size: 36px;
+			font-weight: bold;
+		}
+
+		form {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+		}
+
+		input[type="number"] {
+			width: 100%;
+			padding: 10px;
+			font-size: 18px;
+			margin-bottom: 20px;
+		}
+
+		.check {
+			background-color: #333;
+			color: white;
+			padding: 10px 20px;
+			border: none;
+			border-radius: 10px;
+			cursor: pointer;
+		}
+
+		.check {
+			width: 100%;
+			color: white;
+			border-radius: 5px;
+			border: none;
+			cursor: pointer;
+			transition: 0.3s ease;
+		}
+
+		.check:hover {
+			background-color: #444;
+		}
+
+		.score,
+		.timer {
+			margin-top: 20px;
+			font-size: 18px;
+		}
+
+		/*  */
+		.score {
+			margin-top: 30px;
+			text-align: center;
+		}
+
+		@media only screen and (max-width: 600px) {
+			.header {
+				text-align: center;
+				margin: 0;
+				padding: 20px;
+			}
+
+			.main-game {
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+			}
+
+			.question {
+				margin-bottom: 20px;
+			}
+
+			.answer {
+				width: 80%;
+			}
+
+			input[type="number"] {
+				width: 100%;
+			}
+
+			.check {
+				background-color: #333;
+			}
+		}
+	</style>
+</head>
+
+<body>
+	<header class="header">
+		<h2>solve it</h2>
+	</header>
+	<main>
+		<div class="main-game">
+			<div class="question">
+				<div id="question">
+
+				</div>
+				<span id="num1"></span>
+				<span id="operator"></span>
+				<span id="num2"></span>
+
+			</div>
+			<br>
+			<div class="answer">
+				<form onsubmit="">
+					<input type="number" placeholder="Enter your answer here" name="" id="userInp" />
+					<br>
+					<button id="check" class="check" type="button">check</button>
+				</form>
+				<div class="score" id="score">
+					score = 0
+				</div>
+				<div class="timer" id="timer">
+
+				</div>
+			</div>
+		</div>
+	</main>
+	<script src="script.js">
+		let opr;
+		let n1;
+		let n2;
+		let answer;
+		let input;
+		let score = 0;
+		const timer = document.getElementById("timer");
+
+
+		function getRandomItem(arr) {
+
+			// get random index value
+			const randomIndex = Math.floor(Math.random() * arr.length);
+
+			// get random item
+			const item = arr[randomIndex];
+
+			// returning random item
+			return item;
+		}
+
+		// function for random number
+		function randomNum() {
+			// get random number 
+			let num = parseInt(Math.random() * 10);
+
+			// returning random number 
+			return num;
+		}
+
+		// functon for choosing a random number using getRandomItem() 
+		function operators() {
+
+			// An array containing all the operators
+			let operatorsArray = ['+', '-', '/', '*']
+
+			let op = getRandomItem(operatorsArray);
+
+			return op;
+		}
+
+		function gameOver() {
+			document.getElementById('num2').innerText = ''
+			document.getElementById('num1').innerText = ''
+			document.getElementById('operator').innerText = 'Game over'
+			e.target.innerText = 'Reset';
+			e.target.disabled = true;
+		}
+
+
+		// function to start the game 
+		function start() {
+			// n1 for 1st random number 
+			n1 = randomNum();
+
+			// n2 for 2nd random number
+			n2 = randomNum();
+
+			// opr for random number 
+			opr = operators();
+
+			// if else if ladder for getting answer according to the operator 
+			if (opr == '+') {
+				answer = n1 + n2;
+			} else if (opr == '-') {
+				answer = n1 - n2;
+			} else if (opr == '*') {
+				answer = n1 * n2;
+			} else if (opr == '/') {
+				//  checking if n1 and n2 are divisible
+				if (n1 % n2 == 0) {
+					answer = n1 / n2;
+				} else if (n2 % n1 == 0) {
+					answer = n2 / n1;
+				} else {
+					// multiplying n1 with n2 to make n2 and n1 divisible
+					n1 = n1 * n2;
+					answer = n1 / n2;
+				}
+			}
+
+			// settings the inner text 
+			document.getElementById('num1').innerText = n1;
+			document.getElementById('operator').innerText = opr;
+			document.getElementById('num2').innerText = n2;
+		}
+
+
+		// adding event listener to check button 
+		document.getElementById('check').addEventListener('click', (e) => {
+			e.preventDefault();
+			input = document.getElementById('userInp').value;
+
+			// checking whether the user input is right or not   
+			if (input == answer) {
+				start();
+				document.getElementById('userInp').value = '';
+				score++;
+				document.getElementById('score').innerText = `score = ${score}`;
+			} else {
+				gameOver();
+			}
+		});
+
+		document.onload(start())
+	</script>
+
+
+	<script src="https://replit.com/public/js/replit-badge-v2.js" theme="dark" position="bottom-right"></script>
+</body>
+
+</html>

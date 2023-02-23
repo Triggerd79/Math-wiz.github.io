@@ -10,8 +10,6 @@ let input;
 
 let score = 0;
 
-const timer = document.getElementById("timer");
-
 function getRandomItem(arr) {
 
 	// get random index value
@@ -66,7 +64,6 @@ function gameOver() {
 
 	e.target.innerText = 'Reset';
 
-	e.target.disabled = true;
 
 }
 

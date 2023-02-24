@@ -158,5 +158,3 @@ document.getElementById('check').addEventListener('click', (e) => {
 	}
 
 });
-
-document.onload(start())
